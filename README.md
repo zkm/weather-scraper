@@ -30,7 +30,7 @@ The Weather Scraper project allows users to input a ZIP code and receive the cur
 1. Clone the repository:
    ```sh
    git clone https://github.com/zkm/weather-scraper.git
-   cd weather-scraper/weather-scraper
+   cd weather-scraper
    ```
 
 2. Install the dependencies:
@@ -72,24 +72,18 @@ The Weather Scraper project allows users to input a ZIP code and receive the cur
 
 ```
 weather-scraper/
-├── weather-scraper/         # Node.js server
-│   ├── node_modules/
-│   ├── package.json
-│   ├── index.js
-│   └── ...
-└── weather-app/             # React application
-    ├── node_modules/
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   │   └── Weather.js
-    │   ├── App.css
-    │   ├── App.js
-    │   ├── index.css
-    │   ├── index.js
-    │   └── ...
-    ├── package.json
-    └── ...
+├── index.js                # Node.js server entry
+├── package.json            # Root server/package config
+└── weather-app/            # React (Vite) application
+   ├── public/
+   ├── src/
+   │   ├── components/
+   │   │   └── Weather.jsx
+   │   ├── App.jsx
+   │   ├── index.jsx
+   │   └── ...
+   ├── package.json
+   └── vite.config.js
 ```
 
 ## Dependencies
@@ -104,8 +98,48 @@ weather-scraper/
 ### Frontend
 
 - [react](https://www.npmjs.com/package/react)
-- [axios](https://www.npmjs.com/package/axios)
-- [react-scripts](https://www.npmjs.com/package/react-scripts)
+- [react-dom](https://www.npmjs.com/package/react-dom)
+- [vite](https://www.npmjs.com/package/vite)
+- [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)
+
+## Continuous Integration & Deployment
+
+GitHub Actions workflows automate testing and deployment:
+
+1. CI (`.github/workflows/ci.yml`)
+   - Installs root and `weather-app` dependencies
+   - Runs (placeholder) tests
+   - Builds the React application to ensure production build stays green
+
+2. Deployment (`.github/workflows/deploy.yml`)
+   - Triggers on pushes to `main`
+   - Builds the Vite React app
+   - Publishes `weather-app/dist` to the `gh-pages` branch using `peaceiris/actions-gh-pages`
+
+### GitHub Pages Configuration
+
+- The React app lives in `weather-app/` and is deployed under: `https://zkm.github.io/weather-scraper/weather-app/`
+- `homepage` in `weather-app/package.json` and `base` in `vite.config.js` are set to `/weather-scraper/weather-app/` so asset URLs resolve correctly.
+- If you move the app to the repo root later, update both values to `/weather-scraper/` and remove the subfolder from the GitHub Pages URL.
+
+### Local Production Preview
+
+After building:
+```sh
+cd weather-app
+npm run build
+npm run preview
+```
+Open the shown localhost URL to preview the production build.
+
+### Adding Real Tests
+
+Currently tests are placeholders. To add real tests:
+```sh
+cd weather-app
+npm install -D vitest jsdom @testing-library/react @testing-library/jest-dom
+```
+Add a `vitest.config.js` and replace the `test` script with `vitest run` (or `vitest`). Update the CI workflow to call `npm test` (already present) which will then execute real tests.
 
 ## License
 

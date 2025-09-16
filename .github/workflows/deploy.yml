@@ -31,4 +31,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: weather-app/dist
+          publish_dir: ./weather-app/dist
+          force_orphan: true
