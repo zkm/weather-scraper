@@ -6,7 +6,15 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
-app.use(cors());
+// Allow configurable CORS origin for production; default is permissive for dev.
+const allowedOrigin = process.env.ALLOWED_ORIGIN;
+if (allowedOrigin) {
+  app.use(cors({ origin: allowedOrigin }));
+  console.log(`CORS restricted to origin: ${allowedOrigin}`);
+} else {
+  app.use(cors());
+  console.log('CORS enabled for all origins (development default)');
+}
 
 // Root route
 app.get('/', (req, res) => {

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// Determine API base URL: prefer env variable (configured at build time)
+// Fallback to relative path (useful if reverse proxy) then localhost for dev.
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
 const Weather = () => {
   const [zip, setZip] = useState('');
   const [weather, setWeather] = useState(null);
@@ -8,7 +12,13 @@ const Weather = () => {
 
   const fetchWeather = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/weather?zip=${zip}`);
+      if (!zip) {
+        setError('Please enter a ZIP code');
+        return;
+      }
+      setError(null);
+      const url = `${API_BASE}/weather?zip=${encodeURIComponent(zip)}`.replace(/([^:]?)\/\//g, '$1/');
+      const response = await axios.get(url, { timeout: 15000 });
       setWeather(response.data);
     } catch (error) {
       console.error('Error fetching weather data', error);

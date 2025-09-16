@@ -132,6 +132,32 @@ npm run preview
 ```
 Open the shown localhost URL to preview the production build.
 
+### Hosting the Backend API
+
+The frontend (GitHub Pages) is static and cannot proxy to `localhost:3001` in production. Deploy the Node server (`index.js`) to a host (Render, Railway, Fly.io, etc.) and expose it over HTTPS. Then build the frontend with an environment variable:
+
+Create `weather-app/.env.production` (not committed) or set in your CI build step:
+```
+VITE_API_BASE_URL=https://your-deployed-weather-backend.example.com
+```
+
+`Weather.jsx` reads `import.meta.env.VITE_API_BASE_URL`. If unset it will attempt same-origin (which will fail on Pages) so setting this is required for production data.
+
+Example manual production build:
+```sh
+cd weather-app
+VITE_API_BASE_URL=https://your-deployed-weather-backend.example.com npm run build
+```
+
+Then deploy as usual (workflow will upload the artifact containing correct absolute API calls).
+
+#### CORS
+The server currently enables permissive `cors()`. For tighter security, replace with:
+```js
+app.use(cors({ origin: ['https://zkm.github.io'], methods: ['GET'] }));
+```
+Adjust the origin to match your GitHub Pages domain (organization/user pages do not include the repo name in origin).
+
 ### Adding Real Tests
 
 Currently tests are placeholders. To add real tests:
