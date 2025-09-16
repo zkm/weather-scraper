@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Run root tests
+        run: |
+          if [ -f package.json ] && grep -q 'test' package.json; then npm test; else echo "No root tests"; fi
+
+      - name: Install weather-app dependencies
+        run: |
+          cd weather-app
+          npm install
+
+      - name: Run weather-app tests
+        run: |
+          cd weather-app
+          npm test -- --watchAll=false
