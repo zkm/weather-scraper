@@ -118,9 +118,9 @@ GitHub Actions workflows automate testing and deployment:
 
 ### GitHub Pages Configuration
 
-- The React app lives in `weather-app/` and is deployed under: `https://zkm.github.io/weather-scraper/weather-app/`
-- `homepage` in `weather-app/package.json` and `base` in `vite.config.js` are set to `/weather-scraper/weather-app/` so asset URLs resolve correctly.
-- If you move the app to the repo root later, update both values to `/weather-scraper/` and remove the subfolder from the GitHub Pages URL.
+- The React app lives in `weather-app/` but is now deployed at the repository root URL: `https://zkm.github.io/weather-scraper/`.
+- `homepage` in `weather-app/package.json` and `base` in `vite.config.js` are set to `/weather-scraper/` so built asset paths resolve correctly.
+- If you ever split multiple apps under this repo, you can revert to a subfolder deployment by changing both values accordingly and adjusting the Pages URL.
 
 ### Local Production Preview
 

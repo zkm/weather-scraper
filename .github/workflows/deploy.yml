@@ -8,6 +8,10 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # required for gh-pages push
+      pages: write       # future-proof if using actions/deploy-pages
+      id-token: write    # OIDC (not strictly needed here but safe)
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,18 +22,17 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: |
-          cd weather-app
-          npm install
+        working-directory: weather-app
+        run: npm install --no-audit --no-fund
 
       - name: Build
-        run: |
-          cd weather-app
-          npm run build
+        working-directory: weather-app
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./weather-app/dist
+          publish_dir: weather-app/dist
           force_orphan: true
+          enable_jekyll: false
