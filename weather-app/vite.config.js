@@ -9,5 +9,11 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
   server: {
     open: true,
+    proxy: {
+      '/weather': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
   },
 }));
