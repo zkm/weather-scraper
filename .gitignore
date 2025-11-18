@@ -42,13 +42,9 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Yarn files
+# Yarn files (Yarn 4+ with node-modules linker)
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
 !.yarn/releases
-!.yarn/sdks
-!.yarn/versions
 .pnp.*
 
 # Snowpack dependency directory (https://snowpack.dev/)
@@ -131,9 +127,8 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
+# Yarn 4 (Berry) with node-modules linker
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
 .pnp.*
