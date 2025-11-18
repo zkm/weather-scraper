@@ -2,6 +2,10 @@
   "name": "weather-scraper",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "weather-app"
+  ],
   "scripts": {
     "test": "echo \"No root tests defined. Skipping.\" && exit 0",
     "build": "echo \"No root build step\""
@@ -11,9 +15,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "axios": "^1.7.2",
-    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
     "cors": "^2.8.5",
-    "express": "^4.19.2"
-  }
+    "express": "^4.21.2"
+  },
+  "packageManager": "yarn@4.10.3"
 }

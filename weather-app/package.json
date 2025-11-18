@@ -4,13 +4,14 @@
   "private": true,
   "homepage": "https://zkm.github.io/weather-scraper/",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.2",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "axios": "^1.7.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^4.2.4"
   },
   "scripts": {
     "dev": "vite",
@@ -39,5 +40,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.2",
     "vite": "^7.1.5"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
