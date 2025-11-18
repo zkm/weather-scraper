@@ -26,16 +26,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: weather-app/package-lock.json
+          cache: yarn
 
       - name: Install dependencies
-        working-directory: weather-app
-        run: npm ci
+        run: yarn install --immutable
 
       - name: Build site
         working-directory: weather-app
-        run: npm run build
+        run: yarn build
 
       - name: List build output
         run: ls -R weather-app/dist | head -100
