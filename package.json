@@ -16,27 +16,28 @@
   "description": "",
   "dependencies": {
     "axios": "^1.20.0",
-    "cheerio": "^1.1.2",
+    "cheerio": "^1.2.0",
     "cors": "^2.8.5",
-    "express": "^5.2.1"
+    "express": "^5.3.0"
   },
   "resolutions": {
     "nanoid": "^3.3.18",
     "tar": "^7.5.21",
-    "undici": "^7.29.0",
     "rollup": "^4.59.0",
     "postcss": "^8.5.22",
     "picomatch": "^4.0.4",
     "minimatch": "^10.2.3",
     "@isaacs/brace-expansion": "^5.0.1",
-    "ip-address": "^10.3.1",
     "browserslist": "^4.28.7",
     "qs": "^6.15.1",
     "form-data": "^4.0.6",
     "body-parser": "^2.3.0",
     "path-to-regexp": "^8.4.0",
     "follow-redirects": "^1.16.0",
-    "@babel/core": "^7.29.7"
+    "@babel/core": "^7.29.7",
+    "brace-expansion": "^5.0.12",
+    "source-map-js": "^1.2.2",
+    "proxy-addr": "^2.0.8"
   },
   "packageManager": "yarn@4.10.3"
 }
