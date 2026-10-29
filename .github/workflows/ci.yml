@@ -24,13 +24,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Run root tests (skip placeholder)
-        run: yarn test || echo "Root tests skipped"
-
-      - name: Run weather-app tests (none configured)
-        working-directory: weather-app
-        run: yarn test || echo "No tests configured"
-
       - name: Build weather-app
         working-directory: weather-app
         run: yarn build
