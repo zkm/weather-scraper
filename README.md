@@ -1,6 +1,18 @@
 
 # Weather Scraper
 
+[![CI](https://github.com/zkm/weather-scraper/actions/workflows/ci.yml/badge.svg)](https://github.com/zkm/weather-scraper/actions/workflows/ci.yml)
+[![Deploy](https://github.com/zkm/weather-scraper/actions/workflows/deploy.yml/badge.svg)](https://github.com/zkm/weather-scraper/actions/workflows/deploy.yml)
+[![live demo](https://img.shields.io/website?url=https%3A%2F%2Fzkm.github.io%2Fweather-scraper%2F&label=live%20demo)](https://zkm.github.io/weather-scraper/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+![Express 5](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
+![Cheerio](https://img.shields.io/badge/Cheerio-E88C1F)
+![React 19](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Yarn 4](https://img.shields.io/badge/Yarn-4-2C8EBB?logo=yarn&logoColor=white)
+![Node.js 20](https://img.shields.io/badge/Node.js-20-5FA04E?logo=nodedotjs&logoColor=white)
+
 This project consists of a Node.js server and a React front-end application that scrapes weather data from the Weather Channel website based on a ZIP code input by the user. 
 
 ## Table of Contents
